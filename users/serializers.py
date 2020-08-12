@@ -1,5 +1,9 @@
 from rest_framework import serializers
+from rest_auth.models import TokenModel
 from rest_auth.registration.serializers import RegisterSerializer
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class CustomRegisterSerializer(RegisterSerializer):
@@ -14,3 +18,18 @@ class CustomRegisterSerializer(RegisterSerializer):
 
     def validate(self, data):
         return data
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email')
+
+
+class CustomTokenSerializer(serializers.ModelSerializer):
+    token = serializers.CharField(source='key')
+    user = UserSerializer()
+
+    class Meta:
+        model = TokenModel
+        fields = ('token', 'user')
