@@ -158,3 +158,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Setup CORS
 CORS_ORIGIN_ALLOW_ALL = True
+
+LANGUAGE_CODE = 'es-co'
