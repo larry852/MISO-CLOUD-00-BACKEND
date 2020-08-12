@@ -6,5 +6,5 @@ from .serializers import EventSerializer
 
 
 class EventViewSet(viewsets.ModelViewSet):
-    queryset = Event.objects.all().order_by('id')
+    queryset = Event.objects.all()
     serializer_class = EventSerializer

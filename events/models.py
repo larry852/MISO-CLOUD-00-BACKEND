@@ -14,12 +14,12 @@ class Event(models.Model):
     name = models.CharField(max_length=100)
     place = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    initial_date = models.DateTimeField()
+    final_date = models.DateTimeField()
     datetime = models.DateTimeField(auto_now_add=True)
     type = models.CharField(max_length=10, choices=TYPES)
     thumbnail = models.ImageField(
         upload_to=get_path_class, default='default-event-thumb.jpg')
 
     class Meta:
-        ordering = ['datetime']
+        ordering = ['-datetime']
