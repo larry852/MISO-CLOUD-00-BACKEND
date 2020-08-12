@@ -9,15 +9,15 @@ User = get_user_model()
 
 class Event(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    category = models.CharField(max_length=10, choices=CATEGORIES)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    place = models.CharField(max_length=100)
-    address = models.CharField(max_length=100)
-    initial_date = models.DateTimeField()
-    final_date = models.DateTimeField()
+    event_name = models.CharField(max_length=10, choices=CATEGORIES)
+    event_category = models.CharField(max_length=100)
+    event_place = models.CharField(max_length=100)
+    event_address = models.CharField(max_length=100)
+    event_initial_date = models.DateTimeField()
+    event_final_date = models.DateTimeField()
+    event_type = models.CharField(max_length=10, choices=TYPES)
     datetime = models.DateTimeField(auto_now_add=True)
-    type = models.CharField(max_length=10, choices=TYPES)
     thumbnail = models.ImageField(
         upload_to=get_path_class, default='default-event-thumb.jpg')
 
