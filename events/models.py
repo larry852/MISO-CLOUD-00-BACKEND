@@ -14,8 +14,8 @@ class Event(models.Model):
     event_name = models.CharField(max_length=100)
     event_place = models.CharField(max_length=100)
     event_address = models.CharField(max_length=100)
-    event_initial_date = models.DateTimeField()
-    event_final_date = models.DateTimeField()
+    event_initial_date = models.DateField()
+    event_final_date = models.DateField()
     event_type = models.CharField(max_length=10, choices=TYPES)
     datetime = models.DateTimeField(auto_now_add=True)
     thumbnail = models.ImageField(
